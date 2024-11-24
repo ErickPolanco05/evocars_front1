@@ -8,13 +8,13 @@ const UserList = () => {
   const [searchTerm, setSearchTerm] = useState(''); // Estado para el término de búsqueda
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/usuarios')
+    axios.get('https://evocars.vercel.app/api/usuarios')
       .then(response => setUsers(response.data))
       .catch(error => console.error(error));
   }, []);
 
   const deleteUser = (id) => {
-    axios.delete(`http://localhost:8080/api/usuarios/${id}`)
+    axios.delete(`https://evocars.vercel.app/api/usuarios/${id}`)
       .then(() => setUsers(users.filter(user => user.id_usuario !== id)))
       .catch(error => console.error(error));
   };
@@ -70,7 +70,7 @@ const UserList = () => {
                 <td>
                   {user.foto ? (
                     <img 
-                      src={user.foto.startsWith('http') ? user.foto : `http://localhost:8080/${user.foto}`} 
+                      src={user.foto.startsWith('http') ? user.foto : `https://evocars.vercel.app/${user.foto}`} 
                       alt="Foto de Perfil" 
                       className="user-photo-unique" 
                     />
