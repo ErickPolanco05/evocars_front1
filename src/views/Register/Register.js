@@ -21,7 +21,7 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://evocars.vercel.app/api/usuarios', {
+      const response = await axios.post('/api/usuarios', {
         nombre: fullName,
         email: email,
         contrasena: password,
