@@ -1,0 +1,147 @@
+/* General container styling */
+.user-list-container-unique {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-list-title-unique {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Centering the button */
+.button-container-unique {
+  display: flex;
+  justify-content: center; /* Center the button horizontally */
+  margin-bottom: 20px; /* Spacing below the button */
+}
+
+/* Estilos para el contenedor de búsqueda */
+.search-container-unique {
+  display: flex;
+  justify-content: center; /* Centrar el campo de búsqueda */
+  margin-bottom: 20px; /* Espacio debajo del campo de búsqueda */
+}
+
+.search-input-unique {
+  padding: 10px;
+  width: 300px; /* Ancho del campo de búsqueda */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none; /* Sin contorno al enfocar */
+  transition: border-color 0.3s ease; /* Transición de color del borde */
+}
+
+.search-input-unique:focus {
+  border-color: #f44336; /* Color del borde al enfocar */
+}
+
+/* Button for creating new users */
+.create-user-button-unique {
+  padding: 10px 15px;
+  background-color: #f44336; /* Red color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center; /* Center text */
+}
+
+.create-user-button-unique:hover {
+  background-color: #e53935; /* Darker red on hover */
+}
+
+/* Table styling */
+.table-container-unique {
+  overflow-x: auto; /* Makes table scrollable on small screens */
+}
+
+.user-table-unique {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.user-table-unique th, .user-table-unique td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.user-table-unique th {
+  background-color: #f44336; /* Red color */
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.user-table-unique td {
+  background-color: #fff;
+}
+
+.user-table-unique tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* User photo styling */
+.user-photo-unique {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.action-buttons-unique {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Button styling */
+.edit-button-unique, .delete-button-unique {
+  display: inline-block;
+  padding: 8px 15px;
+  margin: 5px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.edit-button-unique {
+  background-color: #f44336; /* Red color */
+}
+
+.edit-button-unique:hover {
+  background-color: #e53935; /* Darker red on hover */
+}
+
+.delete-button-unique {
+  background-color: #f44336; /* Red color */
+}
+
+.delete-button-unique:hover {
+  background-color: #e53935; /* Darker red on hover */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .user-table-unique {
+    font-size: 0.9rem;
+  }
+
+  .edit-button-unique, .delete-button-unique, .create-user-button-unique {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+}

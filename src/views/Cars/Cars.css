@@ -1,0 +1,325 @@
+/* Estilos generales */
+.cars-app {
+  padding: 2rem;
+  margin-top: -130px;
+  position: relative; /* Para permitir la superposición */
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos del header */
+.header {
+  background-color: #ff0800;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;  /* Fija el navbar en la parte superior */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;  /* Asegura que esté por encima de otros elementos */
+  width: 100%;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.header-nav {
+  display: flex;
+}
+
+.header-nav-link {
+  margin-right: 1rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+.header-nav-link:last-child {
+  margin-right: 0;
+}
+
+/* Estilos para el buscador */
+.search-container {
+  margin-top: 4rem; /* Asegura que no se solape con el navbar */
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #f00;
+  outline: none;
+}
+
+/* Estilos para el botón de filtro */
+.filter-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #f00;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.filter-button:hover {
+  background-color: rgb(184, 0, 0);
+}
+
+/* Estilos para el menú desplegable de filtros */
+.filter-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.filter-select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+/* Estilos para la sección de autos */
+.cars-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Ajuste dinámico de las columnas */
+  gap: 1.5rem;
+}
+
+.car {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.car:hover {
+  transform: translateY(-5px);
+}
+
+.car-image-container {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.car-image1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.car-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 1rem;
+  text-align: center;
+}
+
+.car-title {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.car-price {
+  font-size: 1.2rem;
+  color: #007bff;
+  margin-bottom: 0.5rem;
+}
+
+.discount-price {
+  color: red;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: grey;
+  font-size: 0.9rem;
+  display: block;
+}
+
+.car-details {
+  margin-bottom: 1rem;
+}
+
+.car-detail {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.car-buy-button, 
+.car-details-button {
+  width: 100%;
+  max-width: 200px;
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.car-buy-button {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+}
+
+.car-buy-button:hover {
+  background-color: #e70909;
+}
+
+.car-buy-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.car-details-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+.car-details-button:hover {
+  background-color: #0056b3;
+}
+
+.car-additional-info {
+  background-color: #f8f8f8;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+.fa-circle {
+  margin-right: 0.5rem;
+}
+
+.fa-cylinder,
+.fa-bolt,
+.fa-paint-brush {
+  margin-right: 0.5rem;
+  color: #ff0400;
+}
+
+/* Estilos para pantallas medianas */
+@media (max-width: 1024px) {
+  .cars-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Ajustar las columnas */
+  }
+}
+
+/* Estilos para dispositivos móviles pequeños */
+@media (max-width: 768px) {
+  .cars-container {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* Solo una columna */
+  }
+
+  .car {
+    padding: 1rem;
+  }
+
+  .car-title {
+    font-size: 1rem;
+  }
+
+  .car-price {
+    font-size: 1rem;
+  }
+
+  .car-detail {
+    font-size: 0.9rem;
+  }
+
+  .car-buy-button,
+  .car-details-button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .filter-menu {
+    width: 90%;
+  }
+
+  .search-input {
+    max-width: 90%;
+  }
+}
+
+/* Estilos para pantallas muy pequeñas (412px o menos) */
+@media (max-width: 412px) {
+  .cars-container {
+    grid-template-columns: 1fr;
+  }
+
+  .car {
+    padding: 1rem;
+  }
+
+  .car-title {
+    font-size: 1rem;
+  }
+
+  .car-price {
+    font-size: 1rem;
+  }
+
+  .car-buy-button,
+  .car-details-button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .filter-menu {
+    width: 90%;
+  }
+
+  .search-input {
+    max-width: 90%;
+  }
+}

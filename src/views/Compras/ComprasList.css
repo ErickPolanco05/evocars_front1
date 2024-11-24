@@ -1,0 +1,100 @@
+/* src/views/Compras/ComprasList.css */
+
+.compras-list {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .compras-list h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .compras-list .btn-primary {
+    display: inline-block;
+    margin-bottom: 20px;
+    background-color: #ff0000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .compras-list .btn-primary:hover {
+    background-color: #ff0000;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+  }
+  
+  .table th,
+  .table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #ff0000;
+    color: #fff;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .btn-warning {
+    background-color: #ffc107;
+    color: #212529;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-warning:hover {
+    background-color: #e0a800;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
+  
+  @media (max-width: 768px) {
+    .compras-list {
+      padding: 10px;
+    }
+  
+    .compras-list h2 {
+      font-size: 1.5em;
+    }
+  
+    .table th, .table td {
+      padding: 8px 10px;
+    }
+  
+    .btn-warning, .btn-danger {
+      padding: 4px 8px;
+      font-size: 0.9em;
+    }
+  }

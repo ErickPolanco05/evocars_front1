@@ -1,0 +1,134 @@
+/* Estilo general del NavBar */
+.navbar {
+  width: 100%;
+  background-color: #ffffff;
+  /*position: fixed;*/
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo del logo en el NavBar */
+.navbar-logo img {
+  width: 80px;
+}
+
+/* Estilo para el menú principal del NavBar */
+.navbar-menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+/* Estilo para cada elemento del menú */
+.navbar-menu li {
+  padding: 8px 16px;
+}
+
+/* Estilo para los enlaces del menú */
+.navbar-menu a {
+  color: #000;
+  text-decoration: none;
+  padding: 8px 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilo para los enlaces cuando se pasa el ratón sobre ellos */
+.navbar-menu a:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 5px;
+}
+
+/* Estilo para el enlace activo en el menú */
+.navbar-menu .active {
+  background-color: rgba(255, 0, 0, 1);
+  color: #fff;
+  border-radius: 5px;
+}
+
+/* Estilo para el contenedor de dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Estilo para el botón del dropdown */
+.dropdown-toggle {
+  background-color: #fff;
+  color: #000;
+  padding: 8px 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilo para el botón del dropdown cuando se pasa el ratón sobre él */
+.dropdown-toggle:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 5px;
+}
+
+/* Estilo para el contenido del dropdown */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  top: 100%;
+  left: 0;
+}
+
+/* Estilo para los enlaces dentro del dropdown */
+.dropdown-content a {
+  color: #000;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilo para los enlaces dentro del dropdown cuando se pasa el ratón sobre ellos */
+.dropdown-content a:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+  color: #fff;
+}
+
+/* Mostrar el contenido del dropdown al pasar el ratón sobre el dropdown */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Estilo para el menú a la derecha del NavBar (login/logout) */
+.navbar-menu-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Alinea el menú a la derecha */
+  margin-right: 50px; /* Agrega espacio a la derecha */
+}
+
+/* Estilo para los enlaces en el menú a la derecha */
+.navbar-menu-right a {
+  color: #000;
+  text-decoration: none;
+  padding: 8px 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilo para los enlaces en el menú a la derecha cuando se pasa el ratón sobre ellos */
+.navbar-menu-right a:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 5px;
+}

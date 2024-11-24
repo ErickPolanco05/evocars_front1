@@ -1,0 +1,136 @@
+/* Contenedor general */
+.productos-list-container-unique {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.productos-list-title-unique {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333; /* Color cambiado */
+}
+
+/* Contenedor del botón para agregar nuevo carro */
+.productos-list-button-container-unique {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* Botón para agregar nuevo carro */
+.productos-list-button-unique {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  background-color: #f44336; /* Color cambiado */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.productos-list-button-unique:hover {
+  background-color: #d32f2f; /* Color más oscuro al pasar el mouse */
+}
+
+/* Estilos de tabla */
+.productos-list-table-unique {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.productos-list-table-unique th, .productos-list-table-unique td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.productos-list-table-unique th {
+  background-color: #f44336; /* Color cambiado */
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.productos-list-table-unique td {
+  background-color: #fff;
+}
+
+.productos-list-table-unique tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Imagen de los carros */
+.productos-list-car-image-unique {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* Botones de acciones (editar, eliminar) */
+.productos-list-action-buttons-unique {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Estilo para los botones de acción */
+.edit-button-unique {
+  background-color: #f44336; /* Color cambiado */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button-unique:hover {
+  background-color: #d32f2f; /* Color más oscuro al pasar el mouse */
+}
+
+.delete-button-unique {
+  background-color: #f44336; /* Color cambiado */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button-unique:hover {
+  background-color: #d32f2f; /* Color más oscuro al pasar el mouse */
+}
+
+/* Texto centrado cuando no hay carros */
+.text-center {
+  text-align: center;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+  .productos-list-table-unique {
+    font-size: 0.9rem;
+  }
+
+  .productos-list-button-unique {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+
+  .productos-list-car-image-unique {
+    width: 60px;
+    height: 45px;
+  }
+}

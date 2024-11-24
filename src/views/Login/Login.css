@@ -1,0 +1,91 @@
+/* General Styles */
+.container {
+  display: flex;
+  justify-content: center; /* Centrar el cuadro de login */
+  align-items: center;
+  height: 100vh; 
+  background-color: #fff;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: row; /* Fila para tener el contenido del formulario y el logo lado a lado */
+  align-items: center;
+  width: 850px; /* Ajustar el ancho según sea necesario */
+  padding: 300px;
+  /*background-color: #fff; /* Fondo blanco */
+}
+
+.form-content {
+  width: 50%; /* Ocupa la mitad del cuadro de login */
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%; /* Ocupa la mitad del cuadro de login */
+}
+
+.logo img {
+  width: 85%; /* Ajustar el ancho para que ocupe el 100% del contenedor */
+  height: auto;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+p {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left; /* Alinear el texto a la izquierda */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-family: 'Century Gothic', sans-serif; /* Aplicar Century Gothic al input */
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #f00;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Century Gothic', sans-serif; /* Aplicar Century Gothic al botón */
+}
+
+.btn:hover {
+  background-color: #c00;
+}
+
+.link {
+  color: #007bff;
+  text-decoration: none;
+  font-family: 'Century Gothic', sans-serif; /* Aplicar Century Gothic al link */
+}
+
+.link:hover {
+  text-decoration: underline;
+}

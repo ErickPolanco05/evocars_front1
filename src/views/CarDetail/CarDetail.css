@@ -1,0 +1,160 @@
+/* CarDetail.css */
+
+/* Contenedor principal */
+.car-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  max-width: 1400px; /* Aumentar ancho máximo */
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Contenedor de contenido principal */
+.car-detail-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  width: 100%;
+  max-width: 1000px; /* Aumentar ancho máximo */
+}
+
+/* Wrapper de imagen del carro */
+.car-detail-image-wrapper {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Imagen del carrusel */
+.car-detail-carousel-slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Información del carro */
+.car-detail-info {
+  text-align: center;
+  width: 100%;
+}
+
+/* Título del carro */
+.car-detail-title {
+  font-size: 2.2rem; /* Aumentar tamaño de fuente */
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+}
+
+/* Precio y descuento */
+.car-detail-price,
+.car-detail-discount {
+  font-size: 1.7rem; /* Aumentar tamaño de fuente */
+  color: #ff6b6b;
+  margin: 5px 0;
+}
+
+.car-detail-discount {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+/* Texto informativo */
+.car-detail-info p {
+  font-size: 1.1rem; /* Aumentar tamaño de fuente */
+  margin: 8px 0;
+}
+
+/* Botón de compra */
+.car-detail-buy-button {
+  background-color: #ff6b6b;
+  color: #fff;
+  padding: 14px 28px; /* Aumentar tamaño del botón */
+  font-size: 1.1rem; /* Aumentar tamaño de fuente */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.car-detail-buy-button:hover {
+  background-color: #ff4a4a;
+}
+
+/* Sección de información adicional */
+.car-detail-additional-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1000px; /* Aumentar ancho máximo */
+}
+
+/* Descripción y especificaciones */
+.car-detail-description,
+.car-detail-specifications {
+  background-color: #fff;
+  padding: 35px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #ff6b6b;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* Alinear la descripción a la izquierda */
+.car-detail-description {
+  text-align: left;
+}
+
+/* Título de las secciones */
+.car-detail-section-title {
+  font-size: 1.85rem; /* Aumentar tamaño de fuente */
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Lista de características */
+.car-detail-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.car-detail-ul li {
+  font-size: 1.1rem; /* Aumentar tamaño de fuente */
+  margin: 8px 0;
+  padding: 10px; /* Aumentar padding en cada elemento */
+  background-color: #f1f1f1;
+  border-radius: 4px;
+}
+
+/* Estilos responsivos */
+@media (min-width: 768px) {
+  .car-detail-content {
+    flex-direction: row;
+  }
+
+  .car-detail-image-wrapper,
+  .car-detail-info {
+    flex: 1;
+  }
+
+  .car-detail-additional-info {
+    flex-direction: column;
+    align-items: center;
+  }
+}

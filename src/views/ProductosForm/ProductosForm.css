@@ -1,0 +1,80 @@
+/* ProductosForm.css */
+
+.styled-form-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f4f6f9;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+.styled-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.styled-form h1 {
+  text-align: center;
+  font-size: 26px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.styled-form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.styled-form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.styled-form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #113333, 28, 28;
+  margin-bottom: 5px;
+}
+
+.styled-form-group input,
+.styled-form-group select {
+  padding: 12px;
+  border: 1px solid #ced6e0;
+  border-radius: 6px;
+  background-color: #ecf0f1;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.styled-form-group input:focus,
+.styled-form-group select:focus {
+  border-color: #851c1c;
+  background-color: #fff;
+}
+
+.styled-form-button {
+  padding: 12px;
+  background-color: #851c1c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.styled-form-button:hover {
+  background-color: rgb(133, 28, 28);
+}
+
+.styled-form-button:focus {
+  outline: none;
+  box-shadow: 0 0 6px rgba(133, 28, 28);
+}

@@ -1,0 +1,133 @@
+/* Contenedor general */
+.ofertas-list-container-unique {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+.ofertas-list-title-unique {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333; /* Color cambiado */
+}
+
+/* Contenedor del botón para agregar nueva oferta */
+.ofertas-list-button-container-unique {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* Botón para agregar nueva oferta */
+.agregar-btn-unique {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #f44336; /* Color cambiado */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.agregar-btn-unique:hover {
+  background-color: #218838; /* Color más oscuro al pasar el mouse */
+}
+
+/* Estilos de tabla */
+.ofertas-table-unique {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.ofertas-table-unique th, .ofertas-table-unique td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.ofertas-table-unique th {
+  background-color: #f44336; /* Color cambiado */
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.ofertas-table-unique td {
+  background-color: #fff;
+}
+
+.ofertas-table-unique tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Botones de acciones (editar, eliminar) */
+.ofertas-list-action-buttons-unique {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Botón de eliminar */
+.eliminar-btn-unique {
+  background-color: #f44336;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.eliminar-btn-unique:hover {
+  background-color: #c82333; /* Color más oscuro al pasar el mouse */
+}
+
+/* Botón de editar */
+.editar-btn-unique {
+  background-color: #ffc107; /* Amarillo para ofertas vigentes */
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.editar-btn-unique:hover {
+  background-color: #e0a800; /* Color más oscuro al pasar el mouse */
+}
+
+/* Botón de editar para ofertas vencidas */
+.editar-vencido-btn-unique {
+  background-color: orange; /* Naranja para ofertas vencidas */
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.editar-vencido-btn-unique:hover {
+  background-color: #ff8c00; /* Color más oscuro al pasar el mouse */
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+  .ofertas-table-unique {
+    font-size: 0.9rem;
+  }
+
+  .agregar-btn-unique {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+}

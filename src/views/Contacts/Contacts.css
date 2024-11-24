@@ -1,0 +1,177 @@
+/* Contacts.css */
+.contacts-container {
+  max-width: 100vw;
+  min-height: 100vh;
+  margin-top: -100px;
+  padding: 90px; /* Aumentado el padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Sección: Contáctanos */
+.contact-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #000000, #333333);
+  padding: 100px;
+  margin: 70px 0; /* Más separación entre la sección de contacto */
+  border-radius: 12px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  width: 75%;
+  /*max-width: 1200px;*/
+  box-sizing: border-box;
+}
+
+.contact-details {
+  flex: 1;
+  color: #ffffff;
+  text-align: center;
+  padding-right: 30px;
+}
+
+.contact-info h2 {
+  font-size: 32px;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.contact-details div {
+  font-size: 18px;
+  margin: 10px 0;
+  font-family: Arial, sans-serif;
+}
+
+.social-media {
+  margin-top: 15px;
+}
+
+.social-media a {
+  margin: 0 10px;
+  color: #ff0000;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-media a:hover {
+  color: #ff7878;
+  transform: scale(1.2);
+}
+
+.map-container {
+  flex: 1;
+  margin-left: 30px;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Sección: ¿Cómo podemos ayudarte? */
+.contact-form {
+  background: linear-gradient(135deg, #000000, #333333);
+  padding: 40px 300px;
+
+  border-radius: 12px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+.contact-form h2 {
+  font-size: 32px;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #ff0000;
+  outline: none;
+}
+
+button[type="submit"] {
+  background-color: #ff0000;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  display: block;
+}
+
+button[type="submit"]:hover {
+  background-color: #ff7878;
+  transform: scale(1.05);
+}
+
+/* Estilos para el modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.modal-content .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #ff0000;
+}
+
+.modal-content p {
+  font-size: 18px;
+  color: #333;
+}

@@ -1,0 +1,123 @@
+/* Contenedor general */
+.cupones-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cupones-list-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333; /* Color cambiado */
+}
+
+/* Contenedor del botón para agregar nuevo cupón */
+.cupones-list-button-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* Botón para agregar nuevo cupón */
+.cupones-list-button {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  background-color: #f44336; /* Color cambiado */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cupones-list-button:hover {
+  background-color: #d32f2f; /* Color más oscuro al pasar el mouse */
+}
+
+/* Estilos de tabla */
+.cupones-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.cupones-list-table th, .cupones-list-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.cupones-list-table th {
+  background-color: #f44336; /* Color cambiado */
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.cupones-list-table td {
+  background-color: #fff;
+}
+
+.cupones-list-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Botones de acciones (editar, eliminar) */
+.cupones-list-action-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Estilo para los botones de acción */
+.edit-button {
+  background-color: #f44336; /* Color cambiado */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #d32f2f; /* Color más oscuro al pasar el mouse */
+}
+
+.cupones-list-delete-button {
+  background-color: #f44336; /* Color cambiado */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cupones-list-delete-button:hover {
+  background-color: #d32f2f; /* Color más oscuro al pasar el mouse */
+}
+
+/* Texto centrado cuando no hay cupones */
+.text-center {
+  text-align: center;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+  .cupones-list-table {
+    font-size: 0.9rem;
+  }
+
+  .cupones-list-button {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+}
