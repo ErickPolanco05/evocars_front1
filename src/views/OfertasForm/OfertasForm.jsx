@@ -23,13 +23,13 @@ const OfertasForm = () => {
         setIsEditMode(true);
         try {
           // Obtener oferta para editar
-          const response = await axios.get(`http://localhost:8080/api/ofertas/${id}`);
+          const response = await axios.get(`https://evocars.vercel.app/api/ofertas/${id}`);
           const oferta = response.data;
           oferta.fecha_inicio = oferta.fecha_inicio ? new Date(oferta.fecha_inicio).toISOString().split('T')[0] : '';
           oferta.fecha_fin = oferta.fecha_fin ? new Date(oferta.fecha_fin).toISOString().split('T')[0] : '';
 
           // Obtener detalles del auto
-          const autoResponse = await axios.get(`http://localhost:8080/api/autos/detailed/${oferta.id_auto}`);
+          const autoResponse = await axios.get(`https://evocars.vercel.app/api/autos/detailed/${oferta.id_auto}`);
           oferta.modelo = autoResponse.data.modelo; // Asumimos que la respuesta tiene el modelo
 
           setOfertaData({ ...oferta });
@@ -45,7 +45,7 @@ const OfertasForm = () => {
         const id_auto = localStorage.getItem('id_auto'); // Obtener el id_auto del localStorage
         if (id_auto) {
           try {
-            const autoResponse = await axios.get(`http://localhost:8080/api/autos/detailed/${id_auto}`);
+            const autoResponse = await axios.get(`https://evocars.vercel.app/api/autos/detailed/${id_auto}`);
             setOfertaData(prev => ({
               ...prev,
               id_auto: id_auto,
@@ -83,9 +83,9 @@ const OfertasForm = () => {
       };
 
       if (isEditMode) {
-        await axios.put(`http://localhost:8080/api/ofertas/${id}`, dataToSend);
+        await axios.put(`https://evocars.vercel.app/api/ofertas/${id}`, dataToSend);
       } else {
-        await axios.post('http://localhost:8080/api/ofertas', dataToSend);
+        await axios.post('https://evocars.vercel.app/api/ofertas', dataToSend);
       }
 
       // Eliminar el id_auto del localStorage al terminar
