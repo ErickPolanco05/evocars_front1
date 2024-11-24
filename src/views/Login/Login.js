@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
-import { API_URL } from '../config'; 
+import { API_URL } from '../config/config'; 
 import './Login.css';
 
 function Login() {
@@ -23,7 +23,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${API_URL}/api/auth/login`, {
+      const response = await axios.post('https://evocars.vercel.app/api/auth/login', {
         email: email,
         contrasena: password,
       });
