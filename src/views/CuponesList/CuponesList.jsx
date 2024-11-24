@@ -23,9 +23,9 @@ const CuponesList = () => {
         try {
           let response;
           if (role === 2) {
-            response = await axios.get(`http://localhost:8080/api/cupones/usuario/${id}`);
+            response = await axios.get(`https://evocars.vercel.app/api/cupones/usuario/${id}`);
           } else if (role === 3) {
-            response = await axios.get('http://localhost:8080/api/cupones');
+            response = await axios.get('https://evocars.vercel.app/api/cupones');
           }
 
           if (response && response.data) {
