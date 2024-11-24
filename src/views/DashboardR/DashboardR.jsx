@@ -47,7 +47,7 @@ const DashboardR = () => {
       try {
         const userInfo = JSON.parse(localStorage.getItem('userInfo'));
         const response = await fetch(
-          `http://localhost:8080/api/dashboard-rentador/stats/${userInfo.id_usuario}?año=${selectedYear}`,
+          `https://evocars.vercel.app/api/dashboard-rentador/stats/${userInfo.id_usuario}?año=${selectedYear}`,
           {
             headers: {
               'Authorization': `Bearer ${localStorage.getItem('token')}`
