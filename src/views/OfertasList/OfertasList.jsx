@@ -14,9 +14,9 @@ const OfertasList = () => {
       try {
         let response;
         if (id_rol === 2) {
-          response = await axios.get(`http://localhost:8080/api/autos/ofertavend/${userInfo.id_usuario}`);
+          response = await axios.get(`https://evocars.vercel.app/api/autos/ofertavend/${userInfo.id_usuario}`);
         } else if (id_rol === 3) {
-          response = await axios.get('http://localhost:8080/api/ofertas');
+          response = await axios.get('https://evocars.vercel.app/api/ofertas');
         }
         setOfertas(response.data || []); // Establecer un array vacío por defecto si no hay datos
       } catch (error) {
@@ -29,7 +29,7 @@ const OfertasList = () => {
 
   const eliminarOferta = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/ofertas/${id}`, {
+      await axios.delete(`https://evocars.vercel.app/api/ofertas/${id}`, {
         data: { id_oferta: id }
       });
       setOfertas(prevOfertas => prevOfertas.filter(oferta => oferta.id_oferta !== id)); // Uso de función de actualización de estado
