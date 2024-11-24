@@ -21,7 +21,7 @@ function RenterRegister() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/api/usuarios', {
+      const response = await axios.post('https://evocars.vercel.app/api/usuarios', {
         nombre: fullName,
         email: email,
         contrasena: password,
