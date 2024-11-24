@@ -87,7 +87,7 @@ const DashboardA = () => {
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:8080/api/dashboard/stats?año=${selectedYear}`);
+      const response = await axios.get(`https://evocars.vercel.app/api/dashboard/stats?año=${selectedYear}`);
       const processedData = processData(response.data);
       setDashboardData(processedData);
       setError(null);
