@@ -16,7 +16,7 @@ function Cars() {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/autos');
+        const response = await axios.get('https://evocars.vercel.app/api/autos');
         setCars(response.data);
       } catch (error) {
         console.error('Error fetching cars:', error);
@@ -26,7 +26,7 @@ function Cars() {
 
     const fetchColors = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/colors/');
+        const response = await axios.get('https://evocars.vercel.app/api/colors/');
         setColors(response.data); // Suponiendo que la respuesta es un array de colores
       } catch (error) {
         console.error('Error fetching colors:', error);
