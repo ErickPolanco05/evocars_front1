@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
-import { API_URL } from '../config/config'; 
 import './Login.css';
 
 function Login() {

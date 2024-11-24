@@ -1,4 +1,3 @@
-//hola
 import React, { useState, useEffect } from 'react';
 import './DashboardA.css';
 import { 
