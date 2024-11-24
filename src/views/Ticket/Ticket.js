@@ -12,7 +12,7 @@ const Receipt = () => {
   useEffect(() => {
     const fetchPurchase = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/compra/${id_compra}`);
+        const response = await axios.get(`https://evocars.vercel.app/api/compra/${id_compra}`);
         setPurchase(response.data);
       } catch (error) {
         console.error('Error fetching purchase:', error);
