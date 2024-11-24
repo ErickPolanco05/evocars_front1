@@ -17,7 +17,7 @@ const CuponesForm = () => {
 
   useEffect(() => {
     if (id) {
-      axios.get(`http://localhost:8080/api/cupones/${id}`)
+      axios.get(`https://evocars.vercel.app/api/cupones/${id}`)
         .then(response => {
           const couponData = response.data;
           setCodigo(couponData.codigo);
