@@ -26,7 +26,7 @@ function Cars() {
 
     const fetchColors = async () => {
       try {
-        const response = await axios.get('https://evocars.vercel.app/api/colors/');
+        const response = await axios.get('https://evocars-cristian-ps-projects.vercel.app/api/colors/');
         setColors(response.data); // Suponiendo que la respuesta es un array de colores
       } catch (error) {
         console.error('Error fetching colors:', error);

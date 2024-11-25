@@ -9,7 +9,7 @@ const ComprasList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://evocars.vercel.app/api/compra');
+        const response = await axios.get('https://evocars-cristian-ps-projects.vercel.app/api/compra');
         setCompras(response.data);
       } catch (error) {
         console.error('Error fetching data: ', error);
@@ -21,7 +21,7 @@ const ComprasList = () => {
 
   const deleteCompra = async (id) => {
     try {
-      await axios.delete(`https://evocars.vercel.app/api/compra/${id}`);
+      await axios.delete(`https://evocars-cristian-ps-projects.vercel.app/api/compra/${id}`);
       setCompras(compras.filter((compra) => compra.id_compra !== id));
     } catch (error) {
       console.error('Error deleting compra: ', error);

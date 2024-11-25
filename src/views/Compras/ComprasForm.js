@@ -18,7 +18,7 @@ const ComprasForm = () => {
     if (id) {
       const fetchCompra = async () => {
         try {
-          const response = await axios.get(`https://evocars.vercel.app/api/compra/${id}`);
+          const response = await axios.get(`https://evocars-cristian-ps-projects.vercel.app/api/compra/${id}`);
           setCompra(response.data);
         } catch (error) {
           console.error('Error fetching compra: ', error);
@@ -38,13 +38,13 @@ const ComprasForm = () => {
     e.preventDefault();
     try {
       if (id) {
-        await axios.put(`https://evocars.vercel.app/api/compra/${id}`, compra ,{
+        await axios.put(`https://evocars-cristian-ps-projects.vercel.app/api/compra/${id}`, compra ,{
           headers: {
             'Content-Type': 'application/json'
           }
         });
       } else {
-        await axios.post('https://evocars.vercel.app/api/compra', compra, {
+        await axios.post('https://evocars-cristian-ps-projects.vercel.app/api/compra', compra, {
           headers: {
             'Content-Type': 'application/json'
           }
