@@ -11,6 +11,9 @@ function Register() {
   const [birthdate, setBirthdate] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+    // URL base de la API desde variable de entorno
+    const API_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -21,7 +24,7 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://evocars.vercel.app/api/usuarios', {
+      const response = await axios.post('${API_URL}/api/usuarios', {
         nombre: fullName,
         email: email,
         contrasena: password,
