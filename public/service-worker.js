@@ -9,7 +9,8 @@ const urlsToCache = [
   '/logo512.png',
   '/static/js/main.chunk.js',
   '/static/js/bundle.js',
-  '/static/js/vendors~main.chunk.js'
+  '/static/js/vendors~main.chunk.js',
+  '/offline.html'  // Asegúrate de que este archivo exista en tu carpeta pública
 ];
 
 // Instalación del service worker
@@ -22,24 +23,35 @@ self.addEventListener("install", (event) => {
   );
 });
 
-// Estrategia de cache: Network First, falling back to cache
+// Estrategia de cache: Network First, fallback a cache cuando no haya red
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     fetch(event.request)
       .then((response) => {
-        // Si la red está disponible, guardamos una copia en cache
+        // Si la red está disponible y la respuesta es válida, almacenamos en caché
         if (response && response.status === 200) {
           const responseToCache = response.clone();
-          caches.open(CACHE_NAME)
-            .then((cache) => {
-              cache.put(event.request, responseToCache);
-            });
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
         }
         return response;
       })
-      .catch(() => {
-        // Si la red falla, intentamos recuperar desde cache
-        return caches.match(event.request);
+      .catch(async () => {
+        // Si la red falla, tratamos de obtener el contenido desde la caché
+        const cache = await caches.open(CACHE_NAME);
+        const cachedResponse = await cache.match(event.request);
+
+        if (cachedResponse) {
+          return cachedResponse;
+        }
+
+        // Si no encontramos el recurso en la caché, retornamos una página offline personalizada
+        if (event.request.mode === 'navigate') {
+          const offlineResponse = await cache.match('/offline.html');
+          return offlineResponse || new Response('Sin conexión');
+        }
+        return new Response('Sin conexión');
       })
   );
 });
@@ -57,35 +69,5 @@ self.addEventListener("activate", (event) => {
         })
       );
     })
-  );
-});
-// NUEVO CAMBIO: Mejorar el manejo offline
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        if (response && response.status === 200) {
-          const responseToCache = response.clone();
-          caches.open(CACHE_NAME)
-            .then((cache) => {
-              cache.put(event.request, responseToCache);
-            });
-        }
-        return response;
-      })
-      .catch(async () => {
-        const cache = await caches.open(CACHE_NAME);
-        const cachedResponse = await cache.match(event.request);
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-        // Si no hay cache, retorna una página offline personalizada
-        if (event.request.mode === 'navigate') {
-          const cache = await caches.open(CACHE_NAME);
-          const offlineResponse = await cache.match('/offline.html');
-          return offlineResponse || new Response('Sin conexión');
-        }
-        return new Response('Sin conexión');
-      })
   );
 });

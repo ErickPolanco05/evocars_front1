@@ -1,19 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Descripción general -->
+  <meta name="description" content="Evocars - Tu aplicación de carros">
+  
+  <!-- Meta para configurar el color de la barra superior en dispositivos móviles -->
   <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Evocars - Tu aplicación de carros" />
+  
+  <!-- Meta para optimización en dispositivos Apple -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  
+  <!-- Iconos de la PWA -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   <link rel="icon" type="image/png" sizes="192x192" href="%PUBLIC_URL%/icon-192x192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="%PUBLIC_URL%/icon-512x512.png" />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/icon-192x192.png" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <!-- Título de la app -->
   <title>Evocars</title>
+  
+  <!-- Meta para un mejor SEO -->
+  <meta name="robots" content="index, follow">
+  
+  <!-- Prevenir que la app sea indexada por motores de búsqueda en desarrollo -->
+  <meta name="robots" content="noindex, nofollow" />
 </head>
+
 <body>
   <div id="root"></div>
+
+  <!-- Incluir Service Worker solo en producción -->
+  <script>
+    if (process.env.NODE_ENV === "production" && "serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/service-worker.js").then((registration) => {
+        console.log("Service Worker registrado con éxito:", registration);
+      }).catch((error) => {
+        console.log("Error al registrar el Service Worker:", error);
+      });
+    }
+  </script>
 </body>
 </html>
