@@ -23,9 +23,9 @@ const ProductosList = () => {
         try {
           let response;
           if (role === 2) {
-            response = await axios.get(`https://evocars.vercel.app/api/autos/usuario/${id}`);
+            response = await axios.get(`https://evocars-cristian-ps-projects.vercel.app/api/autos/usuario/${id}`);
           } else if (role === 3) {
-            response = await axios.get('https://evocars.vercel.app/api/autos');
+            response = await axios.get('https://evocars-cristian-ps-projects.vercel.app/api/autos');
           }
 
           if (response && response.data) {
@@ -42,7 +42,7 @@ const ProductosList = () => {
 
       const fetchCategories = async () => {
         try {
-          const response = await axios.get('https://evocars.vercel.app/api/categorias');
+          const response = await axios.get('https://evocars-cristian-ps-projects.vercel.app/api/categorias');
           setCategories(response.data); // Almacenar las categorías
         } catch (error) {
           console.error('Error fetching categories:', error);
@@ -57,7 +57,7 @@ const ProductosList = () => {
   }, []);
 
   const deleteCar = (id_auto) => {
-    axios.delete(`https://evocars.vercel.app/api/autos/${id_auto}`)
+    axios.delete(`https://evocars-cristian-ps-projects.vercel.app/api/autos/${id_auto}`)
       .then(() => setCars(cars.filter(car => car.id_auto !== id_auto)))
       .catch(error => console.error('Error deleting car:', error));
   };
