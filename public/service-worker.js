@@ -10,14 +10,13 @@ const urlsToCache = [
   '/static/js/main.chunk.js',
   '/static/js/bundle.js',
   '/static/js/vendors~main.chunk.js',
-  '/offline.html'  // Asegúrate de que este archivo exista en tu carpeta pública
 ];
 
 // Instalación del service worker
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('Opened cache');
+      console.log('Service Worker: Caché abierto');
       return cache.addAll(urlsToCache);
     })
   );
@@ -46,12 +45,14 @@ self.addEventListener("fetch", (event) => {
           return cachedResponse;
         }
 
-        // Si no encontramos el recurso en la caché, retornamos una página offline personalizada
+        // Si no encontramos el recurso en la caché y es una navegación, se muestra la página offline
         if (event.request.mode === 'navigate') {
-          const offlineResponse = await cache.match('/offline.html');
-          return offlineResponse || new Response('Sin conexión');
+          // Si no tienes offline.html, esta línea solo devolverá "Sin conexión"
+          return new Response('Sin conexión', { status: 503, statusText: 'No disponible' });
         }
-        return new Response('Sin conexión');
+        
+        // Si es cualquier otro recurso, devuelve una respuesta de "Sin conexión"
+        return new Response('Sin conexión', { status: 503, statusText: 'No disponible' });
       })
   );
 });

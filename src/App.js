@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Home from './views/Home/Home';
 import Cars from './views/Cars/Cars';
@@ -22,7 +22,7 @@ import RenterRegister from './views/RenterRegister/RenterRegister';
 import DashboardA from './views/DashboardA/DashboardA';
 import DashboardR from './views/DashboardR/DashboardR';
 import RenterRoute from './components/RenterRoute';
-import ConnectionStatus from "./components/ConnectionStatus"; // NUEVO CAMBIO
+import ConnectionStatus from './components/ConnectionStatus'; // Importamos el componente ConnectionStatus
 
 // Nuevas importaciones para ofertas y cupones
 import OfertasList from './views/OfertasList/OfertasList';
@@ -32,6 +32,7 @@ import CuponesForm from './views/CuponesForm/CuponesForm';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isOnline, setIsOnline] = useState(navigator.onLine); // Agregamos estado para conectividad
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -41,10 +42,11 @@ function App() {
   }, []);
 
   return (
-    
     <Router>
       <div>
+        {/* Mostrar la barra de navegaciÃ³n solo si no estamos en las rutas de login o registro */}
         {!["/login", "/register", "/renter-register"].includes(window.location.pathname) && <NavBar />}
+
         <div className="content">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -123,7 +125,9 @@ function App() {
           </Routes>
         </div>
       </div>
-      <ConnectionStatus /> {/* NUEVO CAMBIO */}
+
+      {/* Pasamos setIsOnline al componente ConnectionStatus */}
+      <ConnectionStatus setIsOnline={setIsOnline} />
     </Router>
   );
 }
