@@ -83,6 +83,11 @@ function Cars() {
       {error && <p className="error-message">{error}</p>}
 
       {/* Buscador */}
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
       <section className="search-container">
         <input
           type="text"
