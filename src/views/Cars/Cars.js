@@ -16,7 +16,7 @@ function Cars() {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const response = await axios.get('https://evocars.vercel.app/api/autos');
+        const response = await axios.get('https://evocars-cristian-ps-projects.vercel.app/api/autos');
         setCars(response.data);
       } catch (error) {
         console.error('Error fetching cars:', error);
