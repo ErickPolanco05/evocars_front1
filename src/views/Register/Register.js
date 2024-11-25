@@ -7,12 +7,12 @@ function Register() {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [gender, setGender] = useState('male'); // Valor por defecto
+  const [gender, setGender] = useState('Hombre'); // Valor por defecto
   const [birthdate, setBirthdate] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    // URL base de la API desde variable de entorno
-    const API_URL = process.env.REACT_APP_API_URL;
+  // URL base de la API desde variable de entorno
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -24,22 +24,22 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('${API_URL}/api/usuarios', {
+      const response = await axios.post(`${API_URL}/api/usuarios`, {
         nombre: fullName,
         email: email,
         contrasena: password,
         fecha_nac: birthdate,
         genero: gender,
         id_rol: 1, // Por defecto, todos los usuarios tendrán id_rol: 1
-        foto: "foto_perfil.jpg" // Valor por defecto para la foto
+        foto: 'foto_perfil.jpg' // Valor por defecto para la foto
       });
 
       // Guardar el token y la información del usuario en localStorage
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userInfo', JSON.stringify(response.data.userInfo));
-      window.location.href = '/';
+      window.location.href = '/'; // Redirigir al home
     } catch (error) {
-      console.error('Error al registrar usuario:', error);
+      console.error('Error al registrar usuario:', error.response?.data || error.message);
     }
   };
 
@@ -88,7 +88,7 @@ function Register() {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="gender">Genero</label>
+              <label htmlFor="gender">Género</label>
               <select
                 id="gender"
                 value={gender}
@@ -113,8 +113,8 @@ function Register() {
             <button type="submit" className="btn btn-primary">Register</button>
           </form>
           <p className="text-center">
-            Already have an account? 
-            <a href="/login" className="link">Login</a>
+            ¿Ya tienes una cuenta? 
+            <a href="/login" className="link">Inicia sesión</a>
           </p>
         </div>
         <div className="logo">
