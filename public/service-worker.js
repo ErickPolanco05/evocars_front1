@@ -10,7 +10,6 @@ const urlsToCache = [
   '/static/js/main.chunk.js',
   '/static/js/bundle.js',
   '/static/js/vendors~main.chunk.js',
-  '/offline.html',  // Agregar offline.html a la caché
 ];
 
 // Instalación del service worker
@@ -48,9 +47,10 @@ self.addEventListener("fetch", (event) => {
 
         // Si no encontramos el recurso en la caché y es una navegación, se muestra la página offline
         if (event.request.mode === 'navigate') {
-          return caches.match('/offline.html'); // Cargar offline.html
+          // Si no tienes offline.html, esta línea solo devolverá "Sin conexión"
+          return new Response('Sin conexión', { status: 503, statusText: 'No disponible' });
         }
-
+        
         // Si es cualquier otro recurso, devuelve una respuesta de "Sin conexión"
         return new Response('Sin conexión', { status: 503, statusText: 'No disponible' });
       })

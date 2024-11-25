@@ -33,73 +33,18 @@ import CuponesForm from './views/CuponesForm/CuponesForm';
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine); // Agregamos estado para conectividad
-  const [deferredPrompt, setDeferredPrompt] = useState(null); // Estado para el evento beforeinstallprompt
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       setIsAuthenticated(true);
     }
-
-    // Escuchar el evento beforeinstallprompt
-    const handleBeforeInstallPrompt = (event) => {
-      // Prevenir que el navegador muestre el banner por defecto
-      event.preventDefault();
-      // Guardar el evento para usarlo más tarde
-      setDeferredPrompt(event);
-    };
-
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-
-    return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    };
   }, []);
-
-  // Función para mostrar el banner de instalación
-  const showInstallBanner = () => {
-    if (deferredPrompt) {
-      // Mostrar un banner personalizado para la instalación
-      const installBanner = document.createElement('div');
-      installBanner.innerHTML = `
-        <div style="position: fixed; bottom: 0; width: 100%; background-color: #333; color: white; padding: 10px; text-align: center;">
-          <p>¡Instala nuestra app para una mejor experiencia!</p>
-          <button id="installButton">Instalar</button>
-        </div>
-      `;
-
-      document.body.appendChild(installBanner);
-
-      const installButton = installBanner.querySelector('#installButton');
-      
-      // Manejar el clic en el botón de instalación
-      installButton.addEventListener('click', () => {
-        // Mostrar el prompt de instalación
-        deferredPrompt.prompt();
-        
-        // Esperar la respuesta del usuario
-        deferredPrompt.userChoice
-          .then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-              console.log('El usuario aceptó la instalación');
-            } else {
-              console.log('El usuario rechazó la instalación');
-            }
-            // Eliminar el banner después de la interacción
-            installBanner.remove();
-          })
-          .catch((error) => {
-            console.error('Error al gestionar la instalación', error);
-            installBanner.remove();
-          });
-      });
-    }
-  };
 
   return (
     <Router>
       <div>
-        {/* Mostrar la barra de navegación solo si no estamos en las rutas de login o registro */}
+        {/* Mostrar la barra de navegaciÃ³n solo si no estamos en las rutas de login o registro */}
         {!["/login", "/register", "/renter-register"].includes(window.location.pathname) && <NavBar />}
 
         <div className="content">
@@ -183,9 +128,6 @@ function App() {
 
       {/* Pasamos setIsOnline al componente ConnectionStatus */}
       <ConnectionStatus setIsOnline={setIsOnline} />
-
-      {/* Mostrar el banner de instalación si está disponible */}
-      {deferredPrompt && showInstallBanner()}
     </Router>
   );
 }
