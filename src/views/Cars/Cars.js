@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-//import NotificationPermission from '../components/NotificationPermission';
+import NotificationPermission from '../../components/NotificationPermission';
 import './Cars.css';
 
 
@@ -85,11 +85,11 @@ function Cars() {
     
     <section className="cars-app">
 
-  {/* {userInfo && (
+  {userInfo && (
         <div className="notification-section">
           <NotificationPermission id_rol={1} /> 
         </div>
-      )} */}
+      )}
 
       {/* Mensaje de error */}
       {error && <p className="error-message">{error}</p>}
