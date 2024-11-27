@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-//import NotificationPermission from '../components/NotificationPermission';
+import NotificationPermission from '../../components/NotificationPermission';
 import './Cars.css';
 
 
@@ -84,8 +84,8 @@ function Cars() {
   return (
     
     <section className="cars-app">
-
-  {/* {userInfo && (
+      <NotificationPermission id_rol={1} />
+     {/* {userInfo && (
         <div className="notification-section">
           <NotificationPermission id_rol={1} /> 
         </div>
