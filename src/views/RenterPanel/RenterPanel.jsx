@@ -1,7 +1,7 @@
 import React from 'react';
 import './RenterPanel.css';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import NotificationPermission from '../components/NotificationPermission';
+
 
 const RenterPanel = () => {
   const location = useLocation();
