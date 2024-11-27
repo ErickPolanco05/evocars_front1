@@ -72,3 +72,34 @@ self.addEventListener("activate", (event) => {
     })
   );
 });
+
+// Manejo de notificaciones push
+self.addEventListener('push', function(event) {
+  if (event.data) {
+    const data = event.data.json();
+    
+    const options = {
+      body: data.body,
+      icon: data.icon || '/icon-192x192.png',
+      badge: data.badge || '/badge-72x72.png',
+      data: data.data || {},
+      vibrate: data.vibrate || [100, 50, 100],
+      timestamp: data.timestamp || Date.now()
+    };
+
+    event.waitUntil(
+      self.registration.showNotification(data.title, options)
+    );
+  }
+});
+
+// Manejo del clic en la notificación
+self.addEventListener('notificationclick', function(event) {
+  event.notification.close();
+  
+  if (event.notification.data.url) {
+    event.waitUntil(
+      clients.openWindow(event.notification.data.url)
+    );
+  }
+});

@@ -1,4 +1,6 @@
+//Dashboard Renter
 import React, { useState, useEffect } from 'react';
+import NotificationPermission from '../components/NotificationPermission';
 import {
   LineChart, Line, PieChart, Pie, BarChart, Bar,
   ComposedChart, XAxis, YAxis, CartesianGrid,
@@ -92,6 +94,7 @@ const DashboardR = () => {
         <h1>Dashboard del Rentador</h1>
         <div className="user-info">
           <span>Bienvenido, {JSON.parse(localStorage.getItem('userInfo')).nombre}</span>
+          <NotificationPermission id_rol={2} /> {/* 2 para rentadores */}
         </div>
         <select 
           value={selectedYear} 
