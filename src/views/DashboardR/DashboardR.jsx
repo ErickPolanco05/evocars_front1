@@ -1,6 +1,6 @@
 //Dashboard Renter
 import React, { useState, useEffect } from 'react';
-import NotificationPermission from '../components/NotificationPermission.jsx';
+import NotificationPermission from '../../components/NotificationPermission';
 import {
   LineChart, Line, PieChart, Pie, BarChart, Bar,
   ComposedChart, XAxis, YAxis, CartesianGrid,
