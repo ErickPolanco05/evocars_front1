@@ -177,7 +177,7 @@ const subscribeUserToPush = async () => {
 const sendSubscriptionToBackend = async (subscription) => {
   try {
     console.log('Enviando suscripción al backend...');
-    const response = await fetch('https://evocars.vercel.app/api/push/send-welcome', {
+    const response = await fetch('https://evocars-cristian-ps-projects.vercel.app/api/push/send-welcome', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
