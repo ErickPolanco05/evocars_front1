@@ -76,30 +76,25 @@ self.addEventListener("activate", (event) => {
 
 // Manejo de notificaciones push
 self.addEventListener('push', function(event) {
-  console.log('Push recibido:', event);
-  
   if (event.data) {
-    try {
-      const data = event.data.json();
-      console.log('Datos de la notificación:', data);
-      
-      const options = {
-        body: data.body,
-        icon: '/icon-192x192.png', // Asegúrate de que este archivo exista
-        badge: '/badge-72x72.png', // Asegúrate de que este archivo exista
-        data: data.data || {},
-        vibrate: [100, 50, 100],
-        timestamp: Date.now()
-      };
+    const data = event.data.json();
+    
+    const options = {
+      body: data.body,
+      icon: data.icon,
+      image: data.image,
+      badge: data.badge,
+      data: data.data,
+      vibrate: [100, 50, 100],
+      actions: data.actions || [],
+      requireInteraction: true, // Hace que la notificación permanezca hasta que el usuario interactúe
+      timestamp: Date.now(),
+      silent: false // Permite el sonido de notificación
+    };
 
-      event.waitUntil(
-        self.registration.showNotification(data.title, options)
-          .then(() => console.log('Notificación mostrada correctamente'))
-          .catch(error => console.error('Error mostrando notificación:', error))
-      );
-    } catch (error) {
-      console.error('Error procesando datos de push:', error);
-    }
+    event.waitUntil(
+      self.registration.showNotification(data.title, options)
+    );
   }
 });
 
@@ -108,8 +103,14 @@ self.addEventListener('push', function(event) {
 self.addEventListener('notificationclick', function(event) {
   event.notification.close();
   
-  // Si la notificación tiene una URL asociada, abre la URL al hacer clic
-  if (event.notification.data.url) {
+  // Si se hizo clic en un botón de acción
+  if (event.action === 'explore') {
+    clients.openWindow('/cars');
+    return;
+  }
+
+  // Comportamiento por defecto al hacer clic en la notificación
+  if (event.notification.data && event.notification.data.url) {
     event.waitUntil(
       clients.openWindow(event.notification.data.url)
     );

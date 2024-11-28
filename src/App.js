@@ -141,12 +141,16 @@ const requestNotificationPermission = async () => {
     const permission = await Notification.requestPermission();
     if (permission === 'granted') {
       console.log('Permiso concedido para notificaciones');
-      subscribeUserToPush();
-    } else {
-      console.log('Permiso denegado para notificaciones');
+      const swRegistration = await navigator.serviceWorker.ready;
+      
+      // Verifica si ya existe una suscripción
+      let subscription = await swRegistration.pushManager.getSubscription();
+      if (!subscription) {
+        subscription = await subscribeUserToPush();
+      }
     }
   } catch (error) {
-    console.error('Error al solicitar permiso para notificaciones:', error);
+    console.error('Error al solicitar permiso:', error);
   }
 };
 
