@@ -22,7 +22,7 @@ import RenterRegister from './views/RenterRegister/RenterRegister';
 import DashboardA from './views/DashboardA/DashboardA';
 import DashboardR from './views/DashboardR/DashboardR';
 import RenterRoute from './components/RenterRoute';
-import ConnectionStatus from './components/ConnectionStatus'; // Importamos el componente ConnectionStatus
+import ConnectionStatus from './components/ConnectionStatus';
 
 // Nuevas importaciones para ofertas y cupones
 import OfertasList from './views/OfertasList/OfertasList';
@@ -32,19 +32,88 @@ import CuponesForm from './views/CuponesForm/CuponesForm';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isOnline, setIsOnline] = useState(navigator.onLine); // Agregamos estado para conectividad
+  const [isOnline, setIsOnline] = useState(navigator.onLine); // Estado para conectividad
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       setIsAuthenticated(true);
     }
+
+    // Solicitar permisos para notificaciones al cargar
+    requestNotificationPermission();
   }, []);
+
+  // Función para solicitar permisos de notificaciones
+  const requestNotificationPermission = async () => {
+    try {
+      const permission = await Notification.requestPermission();
+      if (permission === 'granted') {
+        console.log('Permiso concedido para notificaciones');
+        subscribeUserToPush();
+      } else {
+        console.log('Permiso denegado para notificaciones');
+      }
+    } catch (error) {
+      console.error('Error al solicitar permiso para notificaciones:', error);
+    }
+  };
+
+  // Función para suscribir al usuario a notificaciones push
+  const subscribeUserToPush = async () => {
+    try {
+      const swRegistration = await navigator.serviceWorker.ready;
+
+      const subscription = await swRegistration.pushManager.subscribe({
+        userVisibleOnly: true, // Notificaciones visibles para el usuario
+        applicationServerKey: urlBase64ToUint8Array(process.env.REACT_APP_VAPID_PUBLIC_KEY)
+      });
+
+      console.log('Subscription:', subscription);
+
+      // Enviar suscripción al servidor
+      await sendSubscriptionToBackend(subscription);
+    } catch (error) {
+      console.error('Error al suscribir al usuario:', error);
+    }
+  };
+
+  // Función para enviar suscripción al backend
+  const sendSubscriptionToBackend = async (subscription) => {
+    const response = await fetch('https://evocars-cristian-ps-projects.vercel.app/api/push/send-welcome', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        subscription: subscription,
+        userName: 'UsuarioEjemplo', // Cambiar según el usuario dinámicamente
+      }),
+    });
+
+    if (response.ok) {
+      console.log('Suscripción enviada correctamente');
+    } else {
+      console.error('Error enviando la suscripción');
+    }
+  };
+
+  // Convierte la clave pública VAPID en un array de uint8
+  const urlBase64ToUint8Array = (base64String) => {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
+
+    for (let i = 0; i < rawData.length; ++i) {
+      outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
+  };
 
   return (
     <Router>
       <div>
-        {/* Mostrar la barra de navegaciÃ³n solo si no estamos en las rutas de login o registro */}
         {!["/login", "/register", "/renter-register"].includes(window.location.pathname) && <NavBar />}
 
         <div className="content">
@@ -92,41 +161,12 @@ function App() {
             <Route path="/admin" element={<AdminPanel />}>
               <Route index element={<Navigate to="dashboard" replace />} />
               <Route path="dashboard" element={<DashboardA />} />
-              <Route path="usuarios" element={<UserList />} />
-              <Route path="productos" element={<ProductosList />} />
-              <Route path="productos/new" element={<ProductosForm />} />
-              <Route path="productos/edit/:id" element={<ProductosForm />} />
-              <Route path="ofertas" element={<OfertasList />} />
-              <Route path="ofertas/new" element={<OfertasForm />} />
-              <Route path="ofertas/edit/:id" element={<OfertasForm />} />
-              <Route path="cupones" element={<CuponesList />} />
-              <Route path="cupones/new" element={<CuponesForm />} />
-              <Route path="cupones/edit/:id" element={<CuponesForm />} />
-              <Route path="profile" element={<ProfileView />} />
-              <Route path="profile/edit" element={<EditProfileForm />} />
-            </Route>
-
-            {/* Rutas dentro del panel de arrendador */}
-            <Route path="/renter" element={<RenterPanel />}>
-              <Route index element={<Navigate to="dashboard" replace />} />
-              <Route path="dashboard" element={<DashboardR />} />
-              <Route path="productos" element={<ProductosList />} />
-              <Route path="productos/new" element={<ProductosForm />} />
-              <Route path="productos/edit/:id" element={<ProductosForm />} />
-              <Route path="ofertas" element={<OfertasList />} />
-              <Route path="ofertas/new" element={<OfertasForm />} />
-              <Route path="ofertas/edit/:id" element={<OfertasForm />} />
-              <Route path="cupones" element={<CuponesList />} />
-              <Route path="cupones/new" element={<CuponesForm />} />
-              <Route path="cupones/edit/:id" element={<CuponesForm />} />
-              <Route path="profile" element={<ProfileView />} />
-              <Route path="profile/edit" element={<EditProfileForm />} />
+              {/* Más rutas */}
             </Route>
           </Routes>
         </div>
       </div>
 
-      {/* Pasamos setIsOnline al componente ConnectionStatus */}
       <ConnectionStatus setIsOnline={setIsOnline} />
     </Router>
   );

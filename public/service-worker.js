@@ -1,5 +1,6 @@
 /* eslint-disable no-restricted-globals */
 
+// Nombre del caché y URLs que se almacenarán en caché
 const CACHE_NAME = "evocars-cache-v1";
 const urlsToCache = [
   '/',
@@ -82,7 +83,7 @@ self.addEventListener('push', function(event) {
       body: data.body,
       icon: data.icon || '/icon-192x192.png',
       badge: data.badge || '/badge-72x72.png',
-      data: data.data || {},
+      data: data.data || {}, // Datos adicionales enviados con la notificación
       vibrate: data.vibrate || [100, 50, 100],
       timestamp: data.timestamp || Date.now()
     };
@@ -97,6 +98,7 @@ self.addEventListener('push', function(event) {
 self.addEventListener('notificationclick', function(event) {
   event.notification.close();
   
+  // Si la notificación tiene una URL asociada, abre la URL al hacer clic
   if (event.notification.data.url) {
     event.waitUntil(
       clients.openWindow(event.notification.data.url)
