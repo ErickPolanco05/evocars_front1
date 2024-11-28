@@ -76,25 +76,30 @@ self.addEventListener("activate", (event) => {
 
 // Manejo de notificaciones push
 self.addEventListener('push', function(event) {
-  try {
-    if (event.data) {
+  console.log('Push recibido:', event);
+  
+  if (event.data) {
+    try {
       const data = event.data.json();
-
+      console.log('Datos de la notificación:', data);
+      
       const options = {
         body: data.body,
-        icon: data.icon || '/icon-192x192.png',
-        badge: data.badge || '/badge-72x72.png',
-        data: data.data || {}, // Datos adicionales enviados con la notificación
-        vibrate: data.vibrate || [100, 50, 100],
-        timestamp: data.timestamp || Date.now()
+        icon: '/icon-192x192.png', // Asegúrate de que este archivo exista
+        badge: '/badge-72x72.png', // Asegúrate de que este archivo exista
+        data: data.data || {},
+        vibrate: [100, 50, 100],
+        timestamp: Date.now()
       };
 
       event.waitUntil(
         self.registration.showNotification(data.title, options)
+          .then(() => console.log('Notificación mostrada correctamente'))
+          .catch(error => console.error('Error mostrando notificación:', error))
       );
+    } catch (error) {
+      console.error('Error procesando datos de push:', error);
     }
-  } catch (error) {
-    console.error('Error al procesar la notificación push:', error);
   }
 });
 

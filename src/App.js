@@ -151,33 +151,52 @@ const requestNotificationPermission = async () => {
 };
 
 const subscribeUserToPush = async () => {
-  const swRegistration = await navigator.serviceWorker.ready;
+  try {
+    // Primero verifica si ya existe una suscripción
+    const swRegistration = await navigator.serviceWorker.ready;
+    let subscription = await swRegistration.pushManager.getSubscription();
+    
+    if (!subscription) {
+      console.log('No existe suscripción previa, creando nueva...');
+      subscription = await swRegistration.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(process.env.REACT_APP_VAPID_PUBLIC_KEY)
+      });
+      console.log('Nueva suscripción creada:', subscription);
+    } else {
+      console.log('Suscripción existente encontrada:', subscription);
+    }
 
-  const subscription = await swRegistration.pushManager.subscribe({
-    userVisibleOnly: true,
-    applicationServerKey: urlBase64ToUint8Array(process.env.REACT_APP_VAPID_PUBLIC_KEY)
-  });
-
-  console.log('Subscription:', subscription);
-  await sendSubscriptionToBackend(subscription);
+    // Enviar suscripción al backend
+    await sendSubscriptionToBackend(subscription);
+  } catch (error) {
+    console.error('Error en el proceso de suscripción:', error);
+  }
 };
 
 const sendSubscriptionToBackend = async (subscription) => {
-  const response = await fetch('https://evocars-cristian-ps-projects.vercel.app/api/push/send-welcome', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      subscription: subscription,
-      userName: 'UsuarioEjemplo',
-    }),
-  });
+  try {
+    console.log('Enviando suscripción al backend...');
+    const response = await fetch('https://evocars-cristian-ps-projects.vercel.app/api/push/send-welcome', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        subscription: subscription,
+        userName: localStorage.getItem('userName') || 'Usuario', // Usar nombre real del usuario
+      }),
+    });
 
-  if (response.ok) {
-    console.log('Suscripción enviada correctamente');
-  } else {
-    console.error('Error enviando la suscripción');
+    const data = await response.json();
+    console.log('Respuesta del backend:', data);
+
+    if (!response.ok) {
+      throw new Error(`Error del servidor: ${data.error}`);
+    }
+  } catch (error) {
+    console.error('Error enviando la suscripción:', error);
+    throw error;
   }
 };
 
@@ -192,5 +211,6 @@ const urlBase64ToUint8Array = (base64String) => {
   }
   return outputArray;
 };
+
 
 export default App;
