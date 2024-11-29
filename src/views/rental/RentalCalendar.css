@@ -1,0 +1,30 @@
+.rental-calendar {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-top: 20px;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .rental-calendar h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+  }
+  
+  .rental-calendar .react-datepicker {
+    font-family: Arial, sans-serif;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .react-datepicker__day--selected {
+    background-color: #ff6b6b !important;
+  }
+  
+  .react-datepicker__day--in-range {
+    background-color: #ffeded !important;
+  }
+  
