@@ -26,6 +26,12 @@ function ProductosForm() {
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (!userInfo) {
+      console.error('Usuario no autenticado');
+      // Redirige a la página de login si el usuario no está autenticado
+      navigate('/login');
+      return;
+    }
     if (userInfo) {
       setNombreUsuario(userInfo.nombre);
     }
@@ -72,7 +78,13 @@ function ProductosForm() {
     e.preventDefault();
 
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    const id_usuario = userInfo ? userInfo.id_usuario : null;
+    if (!userInfo || !userInfo.id_rol) {
+      console.error('El usuario no está autenticado o no tiene un rol válido');
+      navigate('/login');
+      return;
+    }
+
+    const id_usuario = userInfo.id_usuario;
 
     const carData = {
       modelo,
@@ -109,16 +121,11 @@ function ProductosForm() {
       }));
 
       // Verificación de rol del usuario
-      if (userInfo && userInfo.id_rol) {
-        const userRole = userInfo.id_rol;
-        if (userRole === 3) {
-          navigate('/admin/productos');
-        } else if (userRole === 2) {
-          navigate('/renter/productos');
-        }
-      } else {
-        console.error('El usuario no está autenticado o no tiene un rol válido');
-        // Puedes redirigir a una página de inicio de sesión si lo deseas
+      const userRole = userInfo.id_rol;
+      if (userRole === 3) {
+        navigate('/admin/productos');
+      } else if (userRole === 2) {
+        navigate('/renter/productos');
       }
 
     } catch (error) {
@@ -248,6 +255,8 @@ function ProductosForm() {
           <input 
             type="file"
             onChange={(e) => setFotoPrincipal(e.target.files[0])}
+            accept="image/*"
+            required
           />
         </div>
 
@@ -255,12 +264,13 @@ function ProductosForm() {
           <label>Fotos Adicionales</label>
           <input 
             type="file"
-            multiple
             onChange={handleAddPhotos}
+            accept="image/*"
+            multiple
           />
         </div>
 
-        <button type="submit">{id ? 'Actualizar Carro' : 'Agregar Carro'}</button>
+        <button type="submit">Guardar</button>
       </form>
     </div>
   );
