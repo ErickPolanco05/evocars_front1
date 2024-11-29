@@ -22,7 +22,7 @@ const PaymentForm = ({ autoId, startDate, endDate, priceDetails, onPaymentComple
                 createOrder: async () => {
                     try {
                         const response = await axios.post(
-                            'http://localhost:8080/api/rentals/process-payment',
+                            'https://evocars-cristian-ps-projects.vercel.app/api/rentals/process-payment',
                             {
                                 id: userInfo.id_usuario,
                                 email: userInfo.email,
@@ -50,7 +50,7 @@ const PaymentForm = ({ autoId, startDate, endDate, priceDetails, onPaymentComple
                 onApprove: async (data) => {
                     try {
                         const response = await axios.post(
-                            'http://localhost:8080/api/rentals/capture-payment',
+                            'https://evocars-cristian-ps-projects.vercel.app/api/rentals/capture-payment',
                             {
                                 orderID: data.orderID, // ID de la orden aprobada por PayPal
                                 payerID: data.payerID,
