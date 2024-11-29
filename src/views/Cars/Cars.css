@@ -55,6 +55,8 @@ a:hover {
   margin-top: 4rem; /* Asegura que no se solape con el navbar */
   margin-bottom: 2rem;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .search-input {
