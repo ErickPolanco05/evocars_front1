@@ -24,7 +24,7 @@ function CarDetail() {
   useEffect(() => {
     const fetchCarDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/autos/detailed/${id}`);
+        const response = await axios.get(`http://evocars-cristian-ps-projects.vercel.app/api/autos/detailed/${id}`);
         setCar(response.data);
       } catch (error) {
         console.error('Error fetching car details:', error);
@@ -54,7 +54,7 @@ function CarDetail() {
   const handlePaymentCompleted = async (paymentResult) => {
     const tokenWeb = localStorage.getItem('token');
     try {
-      const response = await axios.post('http://localhost:8080/api/rentals/process-payment', {
+      const response = await axios.post('http://evocars-cristian-ps-projects.vercel.app/api/rentals/process-payment', {
         autoId: id,
         startDate: selectedDates.start,
         endDate: selectedDates.end,
