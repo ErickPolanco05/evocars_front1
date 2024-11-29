@@ -126,7 +126,7 @@ const DashboardR = () => {
 
       <div className="charts-grid">
         {/* Rentas por Mes */}
-        <div className="chart-card">
+        {/* <div className="chart-card">
           <h3>Rentas por Mes</h3>
           <ChartContainer>
             <LineChart
@@ -146,7 +146,7 @@ const DashboardR = () => {
               />
             </LineChart>
           </ChartContainer>
-        </div>
+        </div> */}
 
         {/* Rentas por Categoría */}
         <div className="chart-card">
