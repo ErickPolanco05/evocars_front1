@@ -96,6 +96,7 @@ function ProductosForm() {
       id_color: colorSeleccionado,
       id_categoria: categoriaSeleccionada,
       id_usuario,
+      id_rol, // Incluimos el id_rol aquí
       foto_principal: fotoPrincipal ? await convertirFotoAFirebase(fotoPrincipal) : null,
       descripcion,
       marca,
