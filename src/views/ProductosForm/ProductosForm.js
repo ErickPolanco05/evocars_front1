@@ -108,11 +108,17 @@ function ProductosForm() {
         });
       }));
 
-      const userRole = userInfo.id_rol;
-      if (userRole === 3) {
-        navigate('/admin/productos');
-      } else if (userRole === 2) {
-        navigate('/renter/productos');
+      // Verificación de rol del usuario
+      if (userInfo && userInfo.id_rol) {
+        const userRole = userInfo.id_rol;
+        if (userRole === 3) {
+          navigate('/admin/productos');
+        } else if (userRole === 2) {
+          navigate('/renter/productos');
+        }
+      } else {
+        console.error('El usuario no está autenticado o no tiene un rol válido');
+        // Puedes redirigir a una página de inicio de sesión si lo deseas
       }
 
     } catch (error) {
@@ -246,27 +252,15 @@ function ProductosForm() {
         </div>
 
         <div className="styled-form-group">
-          <label>Fotos Adicionales (máx. 5)</label>
+          <label>Fotos Adicionales</label>
           <input 
             type="file"
             multiple
-            accept="image/*"
             onChange={handleAddPhotos}
           />
         </div>
 
-        <div className="styled-form-group">
-          <label>Subido por</label>
-          <input 
-            type="text"
-            value={nombreUsuario}
-            readOnly
-          />
-        </div>
-
-        <button type="submit" className="styled-form-button">
-          {id ? 'Guardar Cambios' : 'Agregar Carro'}
-        </button>
+        <button type="submit">{id ? 'Actualizar Carro' : 'Agregar Carro'}</button>
       </form>
     </div>
   );
