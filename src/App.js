@@ -30,6 +30,9 @@ import OfertasForm from './views/OfertasForm/OfertasForm';
 import CuponesList from './views/CuponesList/CuponesList';
 import CuponesForm from './views/CuponesForm/CuponesForm';
 
+//Nuevas importaciones para Pagos
+import RentalConfirmation from './views/rental/RentalConfirmation';
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine); // Agregamos estado para conectividad
@@ -80,6 +83,7 @@ function App() {
             <Route path="/profile" element={<ProfileView />} />
             <Route path="/profile/edit" element={<EditProfileForm />} />
             <Route path="/carros/:id" element={<CarDetail />} />
+            <Route path="/rental-confirmation/:rentalId" element={<RentalConfirmation />} />
 
             {/* Rutas para ofertas */}
             <Route path="/ofertas" element={<OfertasList />} />
