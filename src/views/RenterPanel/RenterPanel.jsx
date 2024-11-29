@@ -18,6 +18,11 @@ const RenterPanel = () => {
     '/renter/cupones/edit'
     
   ];
+  // Función para manejar el cierre de sesión
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Eliminar el token de autenticación
+    navigate('/login'); // Redirigir al login
+  };
 
   return (
     <div className="renter-panel-container">
@@ -69,6 +74,9 @@ const RenterPanel = () => {
             </li>
           </ul>
         </nav>
+        <button className="logout-button" onClick={handleLogout}>
+          Cerrar sesión
+        </button>
       </aside>
       <main className="renter-content">
         {!noHeaderRoutes.includes(location.pathname) && (

@@ -108,7 +108,7 @@ function Register() {
                 required
               />
             </div>
-            <button type="submit" className="btn btn-primary">Register</button>
+            <button type="submit" className="btn btn-primary">Registrar</button>
           </form>
           <p className="text-center">
             ¿Ya tienes una cuenta? 

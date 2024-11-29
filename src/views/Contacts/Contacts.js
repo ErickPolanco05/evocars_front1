@@ -74,7 +74,7 @@ function Contacts() {
             <label htmlFor="message">¿En qué podemos ayudarte?</label>
             <textarea id="message" name="message" rows="4" required></textarea>
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit">Enviar</button>
         </form>
       </section>
 

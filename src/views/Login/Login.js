@@ -75,7 +75,7 @@ function Login() {
               <input
                 type="email"
                 id="email"
-                placeholder="Enter your email"
+                placeholder="Ingresa tu correo"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -86,13 +86,13 @@ function Login() {
               <input
                 type="password"
                 id="password"
-                placeholder="Password"
+                placeholder="Contraseña"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
-            <button type="submit" className="btn btn-primary">Login</button>
+            <button type="submit" className="btn btn-primary">Iniciar sesión</button>
           </form>
           <p className="text-center">
             No tienes cuenta? <a href="/register" className="link">Registrate</a>

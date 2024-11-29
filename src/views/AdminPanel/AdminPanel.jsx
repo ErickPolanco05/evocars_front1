@@ -6,7 +6,11 @@ const AdminPanel = () => {
   const location = useLocation();
 
   const noHeaderRoutes = ['/admin/usuarios', '/admin/productos', '/admin/permisos', '/admin/ofertas', '/admin/cupones', '/admin/dashboard'];
-
+  // Función para manejar el cierre de sesión
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Eliminar el token de autenticación
+    navigate('/login'); // Redirigir al login
+  };
   return (
     <div className="admin-panel-container">
       <aside className="admin-sidebar">
@@ -23,6 +27,9 @@ const AdminPanel = () => {
             <li><Link to="/profile" className="admin-nav-link">Perfil</Link></li>
           </ul>
         </nav>
+        <button className="logout-button" onClick={handleLogout}>
+          Cerrar sesión
+        </button>
       </aside>
       <main className="admin-content">
         {!noHeaderRoutes.includes(location.pathname) && (
