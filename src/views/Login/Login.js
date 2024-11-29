@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
-import NotificationService from '../services/NotificationService';
+import NotificationService from '../../services/NotificationService';
 import './Login.css';
 
 function Login() {
