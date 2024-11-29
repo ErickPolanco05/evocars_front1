@@ -12,7 +12,7 @@ const RentalCalendar = ({ autoId, onDatesSelected }) => {
   useEffect(() => {
     const fetchUnavailableDates = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/autos/${autoId}/disponibilidad`);
+        const response = await axios.get(`https://evocars-cristian-ps-projects.vercel.app/api/autos/${autoId}/disponibilidad`);
         const dates = response.data.map(period => ({
           start: new Date(period.fecha_inicio),
           end: new Date(period.fecha_fin)
@@ -33,7 +33,7 @@ const RentalCalendar = ({ autoId, onDatesSelected }) => {
 
     if (start && end) {
       try {
-        const response = await axios.post('http://localhost:8080/api/rentals/check-availability', {
+        const response = await axios.post('https://evocars-cristian-ps-projects.vercel.app/api/rentals/check-availability', {
           autoId,
           startDate: start.toISOString().split('T')[0],
           endDate: end.toISOString().split('T')[0]

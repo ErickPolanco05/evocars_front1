@@ -17,7 +17,7 @@ const PriceCalculator = ({ autoId, startDate, endDate, onPriceCalculated }) => {
     const calculatePrice = async () => {
       setLoading(true);
       try {
-        const response = await axios.post('http://localhost:8080/api/rentals/calculate-price', {
+        const response = await axios.post('https://evocars-cristian-ps-projects.vercel.app/api/rentals/calculate-price', {
           autoId,
           startDate: startDate.toISOString().split('T')[0],
           endDate: endDate.toISOString().split('T')[0],
