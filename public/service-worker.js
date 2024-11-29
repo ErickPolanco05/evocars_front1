@@ -78,18 +78,16 @@ self.addEventListener("activate", (event) => {
 self.addEventListener('push', function(event) {
   if (event.data) {
     const data = event.data.json();
-    
     const options = {
       body: data.body,
-      icon: data.icon,
-      image: data.image,
-      badge: data.badge,
-      data: data.data,
-      vibrate: [100, 50, 100],
-      actions: data.actions || [],
-      requireInteraction: true, // Hace que la notificación permanezca hasta que el usuario interactúe
-      timestamp: Date.now(),
-      silent: false // Permite el sonido de notificación
+      icon: '/icon-192x192.png', // Asegúrate de tener este ícono en tu carpeta public
+      badge: '/icon-192x192.png',
+      vibrate: [200, 100, 200],
+      tag: 'welcome-notification',
+      requireInteraction: false, // La notificación se cerrará automáticamente
+      data: {
+        url: 'https://evocars-front1.vercel.app' // URL a la que dirigir al hacer clic
+      }
     };
 
     event.waitUntil(
@@ -98,21 +96,9 @@ self.addEventListener('push', function(event) {
   }
 });
 
-
-// Manejo del clic en la notificación
 self.addEventListener('notificationclick', function(event) {
   event.notification.close();
-  
-  // Si se hizo clic en un botón de acción
-  if (event.action === 'explore') {
-    clients.openWindow('/cars');
-    return;
-  }
-
-  // Comportamiento por defecto al hacer clic en la notificación
-  if (event.notification.data && event.notification.data.url) {
-    event.waitUntil(
-      clients.openWindow(event.notification.data.url)
-    );
-  }
+  event.waitUntil(
+    clients.openWindow(event.notification.data.url)
+  );
 });
