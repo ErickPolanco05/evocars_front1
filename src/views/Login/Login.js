@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
-import NotificationService from '../../services/NotificationService';
 import './Login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userRole, setUserRole] = useState(null);
+  const [userRole, setUserRole] = useState(null); // Estado para almacenar el rol del usuario
   const [error, setError] = useState('');
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const storedUserRole = localStorage.getItem('userRole');
+    const storedUserRole = localStorage.getItem('userRole'); // Obtén el rol almacenado
     if (token && storedUserRole) {
       setIsAuthenticated(true);
-      setUserRole(storedUserRole);
+      setUserRole(storedUserRole); // Almacena el rol en el estado
     }
   }, []);
 
@@ -28,40 +27,20 @@ function Login() {
         contrasena: password,
       });
 
-      // Guarda el token y la información del usuario
+      // Guarda el token, la información del usuario y el rol en el localStorage
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userInfo', JSON.stringify(response.data.userInfo));
-      localStorage.setItem('userRole', response.data.userInfo.id_rol);
-      
-      // Configurar notificaciones push después del login exitoso
-      if ('serviceWorker' in navigator && 'PushManager' in window) {
-        try {
-          const permissionGranted = await NotificationService.requestPermission();
-          
-          if (permissionGranted) {
-            await NotificationService.registerServiceWorker();
-            const subscription = await NotificationService.subscribeToPush();
-            await NotificationService.savePushSubscription(
-              subscription, 
-              response.data.userInfo.id_usuario
-            );
-          }
-        } catch (notificationError) {
-          console.error('Error al configurar notificaciones:', notificationError);
-          // Continuamos con el login aunque fallen las notificaciones
-        }
-      }
-
+      localStorage.setItem('userRole', response.data.userInfo.id_rol); // Guarda el rol del usuario
       setIsAuthenticated(true);
-      setUserRole(response.data.userInfo.id_rol);
+      setUserRole(response.data.userInfo.id_rol); // Actualiza el estado con el rol del usuario
 
       // Redirigir según el rol del usuario
       if (response.data.userInfo.id_rol === 2) {
-        window.location.href = '/renter';
+        window.location.href = '/renter'; // Redirige a /renter si el rol es 2
       } else if (response.data.userInfo.id_rol === 3) {
-        window.location.href = '/admin';
+        window.location.href = '/admin'; // Redirige a /admin si el rol es 3
       } else {
-        window.location.href = '/';
+        window.location.href = '/'; // Redirige al home para otros roles
       }
     } catch (error) {
       if (error.response && error.response.status === 401) {
@@ -74,12 +53,13 @@ function Login() {
   };
 
   if (isAuthenticated) {
+    // Si el usuario ya está autenticado, maneja la redirección aquí también
     if (userRole === '2') {
-      return <Navigate to="/renter" />;
+      return <Navigate to="/renter" />; // Redirigir al renter si es rol 2
     } else if (userRole === '3') {
-      return <Navigate to="/admin" />;
+      return <Navigate to="/admin" />; // Redirigir al panel de administradores si es rol 3
     }
-    return <Navigate to="/" />;
+    return <Navigate to="/" />; // Redirigir al home para otros roles
   }
 
   return (
