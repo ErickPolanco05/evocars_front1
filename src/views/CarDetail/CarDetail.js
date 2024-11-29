@@ -24,7 +24,11 @@ function CarDetail() {
   useEffect(() => {
     const fetchCarDetails = async () => {
       try {
+<<<<<<< HEAD
         const response = await axios.get(`https://evocars-cristian-ps-projects.vercel.app/api/autos/detailed/${id}`);
+=======
+        const response = await axios.get(`http://evocars-cristian-ps-projects.vercel.app/api/autos/detailed/${id}`);
+>>>>>>> 5c1c74664eaa332b3fc56a99f0cb46edfb8f9a9a
         setCar(response.data);
       } catch (error) {
         console.error('Error fetching car details:', error);
@@ -54,7 +58,11 @@ function CarDetail() {
   const handlePaymentCompleted = async (paymentResult) => {
     const tokenWeb = localStorage.getItem('token');
     try {
+<<<<<<< HEAD
       const response = await axios.post('https://evocars-cristian-ps-projects.vercel.app/api/rentals/process-payment', {
+=======
+      const response = await axios.post('http://evocars-cristian-ps-projects.vercel.app/api/rentals/process-payment', {
+>>>>>>> 5c1c74664eaa332b3fc56a99f0cb46edfb8f9a9a
         autoId: id,
         startDate: selectedDates.start,
         endDate: selectedDates.end,
