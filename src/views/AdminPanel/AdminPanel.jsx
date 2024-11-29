@@ -1,16 +1,19 @@
 import React from 'react';
 import './AdminPanel.css';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'; // Importar useNavigate
 
 const AdminPanel = () => {
   const location = useLocation();
+  const navigate = useNavigate(); // Crear una instancia de navigate
 
   const noHeaderRoutes = ['/admin/usuarios', '/admin/productos', '/admin/permisos', '/admin/ofertas', '/admin/cupones', '/admin/dashboard'];
+
   // Función para manejar el cierre de sesión
   const handleLogout = () => {
     localStorage.removeItem('token'); // Eliminar el token de autenticación
     navigate('/login'); // Redirigir al login
   };
+
   return (
     <div className="admin-panel-container">
       <aside className="admin-sidebar">
