@@ -11,7 +11,7 @@ const RentalConfirmation = () => {
   useEffect(() => {
     const fetchRentalDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/rentals/${rentalId}`);
+        const response = await axios.get(`https://evocars-cristian-ps-projects.vercel.app/api/rentals/${rentalId}`);
         setRental(response.data);
       } catch (error) {
         console.error('Error fetching rental details:', error);
