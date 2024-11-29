@@ -52,7 +52,7 @@ a:hover {
 
 /* Estilos para el buscador */
 .search-container {
-  margin-top: 4rem; /* Asegura que no se solape con el navbar */
+  margin-top: 100px; /* Asegura que no se solape con el navbar */
   margin-bottom: 2rem;
   text-align: center;
   position: relative;
