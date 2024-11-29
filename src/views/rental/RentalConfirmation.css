@@ -1,0 +1,138 @@
+.rental-confirmation {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .confirmation-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .success-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 20px;
+  }
+  
+  .confirmation-header h2 {
+    color: #28a745;
+    font-size: 2rem;
+    margin: 0;
+  }
+  
+  .confirmation-details {
+    display: grid;
+    gap: 30px;
+    margin: 30px 0;
+  }
+  
+  .detail-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .detail-section h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+  }
+  
+  .detail-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .detail-section li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .detail-section li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  
+  .confirmation-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 30px 0;
+  }
+  
+  .download-button,
+  .home-button {
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .download-button {
+    background-color: #ff6b6b;
+    color: white;
+  }
+  
+  .home-button {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .download-button:hover,
+  .home-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .confirmation-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #dee2e6;
+    color: #6c757d;
+  }
+  
+  .contact-info {
+    margin-top: 10px;
+  }
+  
+  .contact-info a {
+    color: #ff6b6b;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  .loading {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #ff6b6b;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .error {
+    text-align: center;
+    color: #dc3545;
+  }
