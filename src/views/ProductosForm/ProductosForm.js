@@ -85,6 +85,7 @@ function ProductosForm() {
     }
 
     const id_usuario = userInfo.id_usuario;
+    const id_rol = userInfo.id_rol; // Obtenemos el rol del usuario
 
     const carData = {
       modelo,
