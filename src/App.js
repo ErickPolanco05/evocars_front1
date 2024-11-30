@@ -23,6 +23,7 @@ import DashboardA from './views/DashboardA/DashboardA';
 import DashboardR from './views/DashboardR/DashboardR';
 import RenterRoute from './components/RenterRoute';
 import ConnectionStatus from './components/ConnectionStatus'; // Importamos el componente ConnectionStatus
+import SupersetDashboard from './views/SupersetDashboard'; // Importar el nuevo componente
 
 // Nuevas importaciones para ofertas y cupones
 import OfertasList from './views/OfertasList/OfertasList';
@@ -111,6 +112,7 @@ function App() {
               <Route path="cupones/edit/:id" element={<CuponesForm />} />
               <Route path="profile" element={<ProfileView />} />
               <Route path="profile/edit" element={<EditProfileForm />} />
+              <Route path="superset-dashboard" element={<SupersetDashboard />} />
             </Route>
 
             {/* Rutas dentro del panel de arrendador */}

@@ -27,6 +27,7 @@ const AdminPanel = () => {
             <li><Link to="/admin/cupones" className="admin-nav-link">Cupones</Link></li>
             <li><Link to="/admin/ofertas" className="admin-nav-link">Ofertas</Link></li>
             <li><Link to="/admin/dashboard" className="admin-nav-link">Dashboard</Link></li>
+            <li><Link to="/admin/superset-dashboard" className="admin-nav-link">Dashboard Superset</Link></li>
             <li><Link to="/profile" className="admin-nav-link">Perfil</Link></li>
           </ul>
         </nav>
